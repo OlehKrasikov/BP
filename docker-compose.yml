@@ -12,6 +12,7 @@ services:
   frontend:
     build: ./frontend
     container_name: segmentation-ui
+    restart: always
     ports:
       - "80:80"
     depends_on:
