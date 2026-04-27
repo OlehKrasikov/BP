@@ -88,7 +88,7 @@ export default {
         
         this.isLoading = true;
         try {
-        const res = await axios.post('http://localhost:8000/segment-image', formData, { responseType: 'blob' });
+        const res = await axios.post('/api/segment-image', formData, { responseType: 'blob' });
         const url = URL.createObjectURL(res.data);
         imageStore.result = url;
         this.$router.push({ name: 'result', state: { resultUrl: url } });
