@@ -1,0 +1,230 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+#app{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 12vh;
+    font-family: 'Inter', sans-serif;
+}
+
+.param-input[type="number"] {
+    appearance: auto !important;
+    -moz-appearance: number-input !important;
+    -webkit-appearance: number-input !important;
+}
+
+.param-input::-webkit-outer-spin-button,
+.param-input::-webkit-inner-spin-button {
+    -webkit-appearance: inner-spin-button !important;
+    opacity: 1 !important;
+}
+
+button, input, select, textarea {
+    font-family: inherit;
+}
+
+
+body{
+    margin: 0;
+}
+
+.main-container{
+    display: flex;
+    flex-direction: column;  
+    justify-content: center; 
+    align-items: center;
+}
+
+
+.container {
+    width: clamp(1rem, 85vw, 25rem);
+    height: 50vh;
+    justify-content: center;
+    border-radius: 4vh;
+    box-shadow: 0 10px 50px rgb(103 121 185 / 40%);
+    display: flex;
+}
+.main-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.title{
+    font-size: 3vh;
+    text-align: center;
+}
+
+.subtitle{
+  font-size: 110%;
+}
+
+.btn-upload {
+    border: 2px dashed #3b82f6;
+    background-color: #f2f3ff;
+    border-radius: 2vh;
+    width: clamp(1rem, 65%, 20rem);
+    height: clamp(1rem, 40%, 11rem);
+    font-size: 5vh;
+    background-image: url(upload.png);
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 5vh auto;
+}
+
+.preview-container{
+    display: flex;
+    justify-content: center;
+}
+.set-container{
+    display: flex;
+    flex-wrap: wrap;     
+    justify-content: center; 
+    align-items: flex-start; 
+    gap: 30px;            
+    width: 100%;
+    padding: 20px;
+}
+
+.side-container{
+    width: clamp(1rem, 85vw, 20rem);
+    height: 50vh;
+    justify-content: center;
+    border-radius: 4vh;
+    box-shadow: 0 10px 50px rgb(103 121 185 / 40%);
+    display: flex;
+    
+}
+.img-preview{
+    object-fit: contain;
+    width: 80%;
+    height: auto;
+    display: block;
+    margin: 5%;
+}
+
+.params {
+  display: flex;
+  flex-direction: column;
+  gap: 1vh;
+}
+
+.param-row {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 1vw;    
+  margin-bottom: 1vh; 
+  width:  80%;        
+}
+
+.name-param {
+  min-width: 50%;     
+  text-align: left;     
+  margin: 0;
+}
+
+.param-input {
+  width: 15vw;      
+  border-radius: 1vh;
+  margin-right: 3vh;
+  width: inherit;
+  background-color: #c4dbff;
+  box-shadow: 0 5px 29px rgb(133 111 189 / 60%);
+  border: ridge;
+}
+
+.res-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+}
+
+.img-segmented-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.img-segmented{
+  max-width: 50%;
+  max-height: 50%;
+  border: 2px dashed #141419;
+}
+.p-container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  align-items: center;
+
+
+}
+.seg-btn-container{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  flex-direction: column;
+}
+.seg-btn{
+  height: 4vh;
+  border: 0;
+  border-radius: 1vh;
+  width: 80%;
+  margin-top: 3vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #c4dbff;
+  box-shadow: 0 10px 30px rgb(133 111 189 / 70%);
+  border: none; 
+  outline: none;
+}
+
+
+
+.s-btn{
+  max-width: 3vh;
+  max-height: 3vh;
+  margin: 0vh 0.5vh;
+  border-radius: 1vh;
+}
+
+.btn:hover {
+  transform: scale(1.05);
+  filter: brightness(0.9);
+}
+
+.border-img-container{
+  border-style: solid;
+  max-width: 50vh;
+  max-height: 50vh;
+  background-color: white;
+  width: 50vh;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.btn-container{
+  display: flex;
+  width: -webkit-fill-available;
+  justify-content: end;
+  align-items: end;
+  position: absolute;
+    top: 5%;
+    right: 5%;
+}
+#loader{
+  width: 2vh;
+}

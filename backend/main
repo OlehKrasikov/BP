@@ -1,0 +1,70 @@
+from fastapi import FastAPI, HTTPException, UploadFile, File, Form
+from fastapi.responses import FileResponse
+from PIL import Image
+import numpy as np
+import uuid
+import os
+from fastapi.middleware.cors import CORSMiddleware
+
+import fcm
+
+app = FastAPI()
+
+origins = [
+    "http://localhost:8080",
+    "http://127.0.0.1:8080",
+]
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+
+UPLOAD_DIR = "uploads"
+RESULT_DIR = "results"
+os.makedirs(UPLOAD_DIR, exist_ok=True)
+os.makedirs(RESULT_DIR, exist_ok=True)
+
+
+
+
+@app.post("/segment-image")
+async def segment_image(
+    image: UploadFile = File(...),
+    n_clusters: int = Form(...),
+    f_coefficient: float = Form(...),
+    accuracy: float = Form(...),
+    maxIterations: int = Form(...),
+    colorDistance: float = Form(...)
+):
+    file_id = str(uuid.uuid4())
+    input_path = os.path.join(UPLOAD_DIR, f"{file_id}.png")
+    output_path = os.path.join(RESULT_DIR, f"{file_id}_seg.png")
+
+    with open(input_path, "wb") as f:
+        f.write(await image.read())
+
+    image = Image.open(input_path).convert("RGB")
+    image.thumbnail((300,300))
+    width, height = image.size
+    data = np.array(image).reshape(-1, 3)
+
+    coords = []
+    for y in range(height):
+        for x in range(width):
+            coords.append([y, x])
+    coords = np.array(coords)
+    data = np.hstack((data, coords))
+
+    clusters_centers, membership_matrix = fcm.fcm(n_clusters, f_coefficient, data, maxIterations, accuracy, colorDistance,height,width)
+    arr = fcm.cluster_image(membership_matrix, clusters_centers.shape[0])
+    arr = arr.reshape(height, width)
+    image = Image.fromarray(arr)
+
+    image.save(output_path)
+    return FileResponse(output_path, media_type="image/png")
+
