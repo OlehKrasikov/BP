@@ -1,6 +1,0 @@
-@echo off
-echo Stopping old containers...
-docker-compose down
-echo Building and starting new version...
-docker-compose up --build
-pause
