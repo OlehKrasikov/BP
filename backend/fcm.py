@@ -16,7 +16,7 @@ def calc_distance(data, centers, color_coefficient, width=None, height=None):
     for x in range(centers.shape[0]):
         center = centers[x]
 
-        color_dist = np.sqrt(np.sum((data[:, :3] - center[:3]) ** 2, axis=1)) / 255
+        color_dist = np.sqrt(np.sum((data[:, :3] - center[:3]) ** 2, axis=1)) / (255 * np.sqrt(3))
 
         pixel_dist = np.sqrt(np.sum((data[:, 3:] - center[3:]) ** 2, axis=1)) / norm_for_pixel_dist
 
