@@ -1,0 +1,4 @@
+
+start "Backend"  python -m uvicorn main:app --reload --port 8000"
+start "Frontend" npm run serve"
+ssh -i .\my-site-key.pem ubuntu@51.21.181.179
